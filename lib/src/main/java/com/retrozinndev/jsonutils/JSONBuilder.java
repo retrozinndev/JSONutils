@@ -1,56 +1,56 @@
 package com.retrozinndev.jsonutils;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.BufferedWriter;
+
+import com.retrozinndev.jsonutils.Message.Type;
 
 public class JSONBuilder extends JSON {
-    private JSONBuilder inst;
-    public String tab = "    ";
+    private JSONBuilder inst = this;
 
+    /**
+     * JSONBuilder class constructor, for creating new JSON files with variables and many things.
+     * @param jsonFile
+     * The JSON file to be created.
+     */
     public JSONBuilder(File jsonFile) {
         super(jsonFile);
     }
 
+    /**
+     * JSONBuilder class constructor, for creating new JSON files with variables and many things.
+     * @param jsonFile
+     * The directory of the JSON file to be created.
+     */
     public JSONBuilder(String jsonDir) {
         super(jsonDir);
     }
-    
+
     /**
-     * Creates an empty JSON file with a opened block.
-     * @param jsonFile
-     * The JSON File to be created.
-     * @return
-     * Instance of JSONBuilder class.
+     * Writes the final JSON with the given objects in the given directory.
      */
-    public JSONBuilder makeEmptyJSON(File jsonFile) {
-        if(!jsonFile.exists()) {
-            BufferedWriter writer;
-            try {
-                writer = new BufferedWriter(new FileWriter(jsonFile));
-                writer.write("{\n"+tab+"\n}");
-                writer.close();
-            } catch(IOException e) { e.printStackTrace(); }
-        }
+    public JSON makeJSON() {
+        if(!jsonFile.exists()) { makeEmptyJSON(jsonFile); }
+        boolean hasModifications = queuedJSONChanges.size() > 0;
+        if(hasModifications) 
+            writeModifications(jsonFile);
+        else 
+            Message.send(Type.Normal, "No modifications were found for 'json' object, nothing has changed.");
+        
+        return new JSON(jsonFile);
+    }
+
+    public JSONBuilder newVariable(String keyString, boolean value) {
+        queuedJSONChanges.put(keyString, value);
         return inst;
     }
 
-    // public JSONBuilder newBlock() {
-    //     return inst;
-    // }
+    public JSONBuilder newVariable(String keyString, int value) {
+        queuedJSONChanges.put(keyString, value);
+        return inst;
+    }
 
-    // public JSONBuilder newVariableArray(Object) {
-    //     return inst;
-    // }
-
-    public JSONBuilder newVariable(Object keyObject, Object valueObject) {
-        if(!json.exists()) { makeEmptyJSON(json); }
-        BufferedWriter writer;
-        try {
-            writer = new BufferedWriter(new FileWriter(json));
-            
-        } catch(IOException e) { e.printStackTrace(); }
+    public JSONBuilder newVariable(String keyString, String value) {
+        queuedJSONChanges.put(keyString, value);
         return inst;
     }
 }
