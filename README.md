@@ -2,9 +2,8 @@
 A simple JSON Library for java, still in development.
 
 ### TODO:
- - Add JSON variables to file;
+ - Search for value of variable using a get();
  - Read file for existing variables before writing new ones;
- - Only write when `JSONBuilder.makeJSON()` is called;
  - Make a JSONFormatter class.
 
 ### Usage
