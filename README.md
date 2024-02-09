@@ -6,6 +6,24 @@ A simple JSON Library for java, still in development.
  - Read file for existing variables before writing new ones;
  - Make a JSONFormatter class.
 
+### How it works
+JSONutils Library's focus is the `JSON` class.
+
+- **JSON** <br>
+When creating a new JSON type instance, searches for the indicated file. If the file exists, then
+the library reads it, adds variables and values contained in it to a HashMap (`jsonMap<>`). You can get the Map using the `JSON.toMap()` method.
+
+- **JSONBuilder** <br>
+You can use it separately from the `JSON` class or use it in a single line, just like the [Example in Usage section](#Usage).
+**JSONBuilder** class is useful for writing new variables on a new JSON file.
+<!--
+- **JSONReader** <br>
+When the **JSON** class is instantiated, the **JSONReader** class is used for calling the `JSONReader.readMap()` function. This function reads the JSON 
+file, gets the variables and their values, adds them to a **Map** of **<String, Object>** and returns the used HashMap(`JSON.jsonMap<>`) with all variables in it.
+-->
+- **Message** <br>
+This class is only used internally for sending console messages in a more organized way inside the code.
+
 ### Usage
 Here's an example usage of JSONutils:
 ```java
