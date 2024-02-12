@@ -1,6 +1,7 @@
 # JSONutils
 A simple JSON Library for java, still in development.
 
+[![](https://jitpack.io/v/retrozinndev/JSONutils.svg)](https://jitpack.io/#retrozinndev/JSONutils)
 ### TODO:
  - Search for value of variable using a get();
  - Read file for existing variables before writing new ones;
