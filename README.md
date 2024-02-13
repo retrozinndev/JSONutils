@@ -17,11 +17,11 @@ the library reads it, adds variables and values contained in it to a HashMap (`j
 - **JSONBuilder** <br>
 You can use it separately from the `JSON` class or use it in a single line, just like the [Example in Usage section](#Usage).
 **JSONBuilder** class is useful for writing new variables on a new JSON file.
-<!--
+
 - **JSONReader** <br>
 When the **JSON** class is instantiated, the **JSONReader** class is used for calling the `JSONReader.readMap()` function. This function reads the JSON 
 file, gets the variables and their values, adds them to a **Map** of **<String, Object>** and returns the used HashMap(`JSON.jsonMap<>`) with all variables in it.
--->
+
 - **Message** <br>
 This class is only used internally for sending console messages in a more organized way inside the code.
 
