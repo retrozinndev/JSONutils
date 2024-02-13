@@ -11,9 +11,11 @@ import com.retrozinndev.jsonutils.Message.Type;
 
 public class JSON {
     protected File jsonFile;
+    private JSONReader jReader = null;
+    private JSONBuilder jBuilder = null;
     public String tab = "    ";
     
-    public Map<String, Object> queuedJSONChanges = new HashMap<>();
+    
     public Map<String, Object> jsonMap = new HashMap<>();
 
     /**
@@ -23,8 +25,10 @@ public class JSON {
      */
     public JSON(String jsonDir) {
         if(!jsonDir.endsWith(".json")) {
-            jsonFile = new File(jsonDir.toString()+".json");
+            jsonDir += ".json";
         }
+        jsonFile = new File(jsonDir);
+        if(jsonFile.exists()) getReader().readMap(this);
     }
 
     /**
@@ -34,8 +38,10 @@ public class JSON {
      */
     public JSON(File jsonFile) {
         if(!jsonFile.toString().endsWith(".json")) {
-            this.jsonFile = new File(jsonFile.toString()+".json");
+            jsonFile = new File(jsonFile.toString()+".json");
         }
+        this.jsonFile = jsonFile;
+        if(jsonFile.exists()) getReader().readMap(this);
     }
 
     /**
@@ -49,7 +55,7 @@ public class JSON {
      * The value of the key in the JSON.
     */
     public Object getValue(String keyObject) {
-        return ""; //TODO
+        return jsonMap.get(keyObject);
     }
 
     /**
@@ -88,39 +94,29 @@ public class JSON {
 
         return jsonFile;
     }
+
     /**
-     * Writes all given variables in Queued HashMap using JSONBuilder.newVariable() method.
-     * <p>
-     * OBS: This method is used internally in the JSONBuilder class, inside the makeJSON() method.
-     * @param json
-     * The JSON file to write variables.
+     * Gets the JSONReader instance from the JSON class.
      * @return
-     * The JSON instance.
+     * A JSONReader instance.
      */
-    public JSON writeModifications(File json) {
-        jsonMap.putAll(queuedJSONChanges);
-        queuedJSONChanges.clear();
-        BufferedWriter writer;
-        try {
-            writer = new BufferedWriter(new FileWriter(json));
-            writer.write("{\n");
-            for(int i = 0; i < jsonMap.keySet().size(); i++) {
-                String lineKey = jsonMap.keySet().toArray()[i].toString();
-                Object lineValue = jsonMap.get(lineKey);
-                String jsonLine = "\""+lineKey+"\": "+lineValue;
-                if(lineValue instanceof String) 
-                    jsonLine = "\""+lineKey+"\": \""+lineValue.toString()+"\"";
+    public JSONReader getReader() {
+        if(jReader == null && jsonFile != null) 
+            jReader = new JSONReader(jsonFile);
+        
+        return jReader;
+    }
 
-                
-                if(i != jsonMap.size() - 1) { jsonLine+=", \n"; }
-                writer.write(tab+jsonLine);
-            }
+    /**
+     * Gets the JSONBuilder instance from the JSON class.
+     * @return
+     * A JSONBuilder instance.
+     */
+    public JSONBuilder getBuilder() {
+        if(jBuilder == null) 
+            jBuilder = new JSONBuilder(jsonFile);
 
-            writer.write("\n}");
-            writer.close();
-        } catch(IOException e) { e.printStackTrace(); }
-
-        return new JSON(json);
+        return jBuilder;
     }
 
     /**
@@ -131,13 +127,9 @@ public class JSON {
     public Map<String, Object> toMap() { return jsonMap; }
 
     /**
-     * Gets a Map of queued changes in the JSON instance.
-     * <p>
-     * OBS: when new variables are added, they are queued in this Map until you call makeJSON() on them.
-     * </p>
+     * Returns this json as a file.
      * @return
-     * Map<String, Object> containing queued changes.
-     * 
+     * A File containing the JSON.
      */
-    public Map<String, Object> getQueuedChanges() { return queuedJSONChanges; }
+    public File toFile() { return jsonFile; }
 }
