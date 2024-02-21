@@ -2,12 +2,12 @@
 A simple JSON Library for java, still in development.
 
 [![](https://jitpack.io/v/retrozinndev/JSONutils.svg)](https://jitpack.io/#retrozinndev/JSONutils)
-### TODO:
+## TODO:
  - Search for value of variable using a get();
  - Read file for existing variables before writing new ones;
  - Make a JSONFormatter class.
 
-### How it works
+## How it works
 JSONutils Library's focus is the `JSON` class.
 
 - **JSON** <br>
@@ -25,10 +25,10 @@ file, gets the variables and their values, adds them to a **Map** of **<String, 
 - **Message** <br>
 This class is only used internally for sending console messages in a more organized way inside the code.
 
-### Usage
-Here are two examples of usage of JSONutils:
+## Usage
+Here are two usage examples of JSONutils:
 <!--1. --> 
-#### JSONBuilder
+### JSONBuilder
 - Multi-lined:
  ```java
  File file = new File("example.json"); // Creates an instance of the Java File class
@@ -41,7 +41,7 @@ Here are two examples of usage of JSONutils:
  // If the file doesn't exists, creates the file with the given variable(newVariable())
  JSONBuilder jsonFile = new JSONBuilder("/directory/file.json").newVariable("IsLibraryComplete", false).makeJSON();
  ```
-#### JSON
+### JSON
 ```java
  JSON json = new JSON("example.json").get("SomeVariableName"); // If exists, returns the value of this variable
 ```
