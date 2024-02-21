@@ -26,14 +26,22 @@ file, gets the variables and their values, adds them to a **Map** of **<String, 
 This class is only used internally for sending console messages in a more organized way inside the code.
 
 ### Usage
-Here's an example usage of JSONutils:
+Here are two examples of usage of JSONutils:
+<!--1. --> 
+#### JSONBuilder
+- Multi-lined:
+ ```java
+ File file = new File("example.json"); // Creates an instance of the Java File class
+ JSONBuilder builder = new JSONBuilder(file); // JSONBuilder instance, asks for File (A File instance) or String (Directory)
+ builder.newVariable("ExampleVar", "example_value"); // Adds the variable to a queue
+ builder.makeJSON(); // Makes the JSON file with the given variables
+ ```
+- Single lined:
+ ```java
+ // If the file doesn't exists, creates the file with the given variable(newVariable())
+ JSONBuilder jsonFile = new JSONBuilder("/directory/file.json").newVariable("IsLibraryComplete", false).makeJSON();
+ ```
+#### JSON
 ```java
-JSON jsonFile = new JSONBuilder("/directory/file.json").newVariable("IsLibraryComplete", false).makeJSON();
+ JSON json = new JSON("example.json").get("SomeVariableName"); // If exists, returns the value of this variable
 ```
-**Explanation**:
- - `jsonFile` is an instance of the JSON class;
- - `jsonFile` is instantiated using JSONBuilder for adding variables and building the JSON using `makeJSON()`;
- - `JSONBuilder` has(not yet) many methods to build a JSON file, such as `newVariable(String key, Object value)`, and `makeJSON()`;
- - `JSONBuilder` is extended from the `JSON` class;
- - `makeJSON()` has to be used in the end of the line;
- - `newVariable()` adds the variable to a HashMap, which in `makeJSON()` will be written to a file, just like `Writer.flush()`.
