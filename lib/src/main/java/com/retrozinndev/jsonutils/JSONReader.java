@@ -50,8 +50,14 @@ public class JSONReader {
                     
                     String[] splittedLine = formattedLine.split(":");
                     
-                    String key = splittedLine[0].replace('"', ' ').trim();
-                    Object value = splittedLine[1].replace(',', ' ').trim();
+                    String key = splittedLine[0].trim();
+                    Object value = splittedLine[1].trim();
+
+                    if(key.contains("\"")) {
+                        key = splittedLine[0].replace('"', ' ').trim();
+                    } else if (value.toString().contains(",")) {
+                        value = splittedLine[1].replace(',', ' ').trim();
+                    }
                     
                     json.toMap().put(key, getValueType(value));
                 }
