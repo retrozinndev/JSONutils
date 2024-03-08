@@ -139,7 +139,7 @@ public class JSONBuilder {
      * @param jsonFile
      * The JSON File to be created.
      * @return
-     * The empty JSON File.
+     * An empty JSON File.
      */
     protected File makeEmptyJSON(File jsonFile) {
         BufferedWriter writer;

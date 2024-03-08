@@ -1,7 +1,6 @@
 package com.retrozinndev.jsonutils;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -88,7 +87,7 @@ public class JSON {
      */
     public JSONReader getReader() {
         if(jReader == null && jsonFile != null) 
-            jReader = new JSONReader(jsonFile);
+            jReader = new JSONReader(this);
         
         return jReader;
     }
@@ -100,7 +99,7 @@ public class JSON {
      */
     public JSONBuilder getBuilder() {
         if(jBuilder == null) 
-            jBuilder = new JSONBuilder(jsonFile);
+            jBuilder = new JSONBuilder(this);
 
         return jBuilder;
     }
@@ -112,7 +111,7 @@ public class JSON {
      * @return This JSON instance.
      */
     public JSON newVariable(String name, Object value) {
-        getBuilder().queuedJSONChanges.put(name, value);
+        queuedJSONChanges.put(name, value);
         return this;
     }
 
@@ -129,7 +128,10 @@ public class JSON {
     /**
      * Reads the JSON file. Can be used to prevent problems when trying to get a recently added value to JSON.
      */
-    public void read() { getReader().readMap(this); }
+    public JSON read() {
+        getReader().readMap(this);
+        return this;
+    }
 
     /**
      * Writes the JSON file. With all variables inside the JSON Map and queued variable and re-reads the JSON.
@@ -137,7 +139,7 @@ public class JSON {
      */
     public JSON write() {
         getBuilder().writeJSON(this); 
-        //read();
+        read();
         return this;
     }
 
