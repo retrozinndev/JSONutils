@@ -6,7 +6,7 @@ A simple JSON Library for java, still in development.
  - Make a JSONFormatter class.
 
 ## How it works
-JSONutils Library's focus is the `JSON` class.
+JSONutils Library's focus is the `JSON` class. Make use of the main class for reading and writing JSONs. 
 
 - **JSON** <br>
 JSONutils' main class. When creating a new JSON class instance, searches for the mentioned file. If the file exists, then
@@ -25,8 +25,7 @@ This class is only used internally for sending console messages in a more organi
 
 ## Usage
 Here is a usage example of the JSON class.
-### JSON
-#### Using directory
+### Using directory
 ```java
  JSON json = new JSON("example.json"); //Initializes the JSON instance with a file directory
  /* Adds example variables to JSON queue */
@@ -38,7 +37,7 @@ Here is a usage example of the JSON class.
  /* Prints a key and its respective value */
  System.out.println("someKeyString -> " + json.getValue("someKeyString"));
 ```
-#### Using a File instance
+### Using a File instance
 Works the same as when [using a directory](#Using-directory), but using a File class instance instead.
 ```java
  JSON json = new JSON(new File("fileExample.json")); //Initializes the JSON instance with a File class instance
