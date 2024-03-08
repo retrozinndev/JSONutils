@@ -5,24 +5,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.Map;
 
+import com.retrozinndev.jsonutils.Message.Type;
+
 public class JSONReader {
 
     private JSON json;
     private File jsonFile;
-
-    public JSONReader(String jsonDir) {
-        if(!jsonDir.endsWith(".json")) {
-            jsonDir += ".json";
-        }
-        this.jsonFile = new File(jsonDir);
-    }
-
-    public JSONReader(File jsonFile) {
-        if(!jsonFile.toString().endsWith(".json")) {
-            jsonFile = new File(jsonFile.toString()+".json");
-        }
-        this.jsonFile = jsonFile;
-    }
 
     public JSONReader(JSON json) {
         this.jsonFile = json.toFile();
@@ -43,15 +31,32 @@ public class JSONReader {
             try {
                 reader = new BufferedReader(new FileReader(json.toFile()));
                 String line, formattedLine;
-                while((line = reader.readLine())!= null) {
+                int lineNumber = 0;
+                while((line = reader.readLine()) != null) {
+                    lineNumber++;
                     formattedLine = line.trim();
-                    if(formattedLine.equals("{") || formattedLine.equals("}")) 
+                    if(formattedLine.startsWith("{") || formattedLine.startsWith("}")) 
                         continue;
                     
-                    String[] splittedLine = formattedLine.split(":");
-                    
-                    String key = splittedLine[0].replace('"', ' ').trim();
-                    Object value = splittedLine[1].replace(',', ' ').trim();
+                    String[] splittedLine = null;
+                    if(formattedLine.contains(":")) {
+                        splittedLine = formattedLine.split(":");
+                    } else {
+                        Message.send(Type.Error, "Couldn't read variable at \""+json.toFile().toString()+"\":");
+                        Message.send(Type.Error, "An error occurred when trying to read the variable value: ");
+                        Message.send(Type.Tip, "At: \""+formattedLine+"\", line: " + lineNumber);
+                        continue;
+                    }
+                    String key = splittedLine[0].trim();
+                    Object value = splittedLine[1].trim();
+                    if(value.toString().contains(",")) 
+                        value = value.toString().replace(",", " ").trim();
+
+                    if(key.contains("\"")) {
+                        key = splittedLine[0].replace('"', ' ').trim();
+                    } else if (value.toString().contains(",")) {
+                        value = splittedLine[1].replace(',', ' ').trim();
+                    }
                     
                     json.toMap().put(key, getValueType(value));
                 }
@@ -59,7 +64,10 @@ public class JSONReader {
                 reader.close();
 
                 return json.toMap();
-            } catch(Exception e) { e.printStackTrace(); }
+            } catch(Exception e) { 
+                Message.send(Type.Error, "Couldn't read \""+json.toFile().toString()+"\":");
+                e.printStackTrace();
+            }
         }
         return null;
     }

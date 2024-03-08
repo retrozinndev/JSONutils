@@ -31,5 +31,5 @@ java {
 }
 
 tasks.named('test') {
-    print("Testing is not available in ${rootProject.name}")
+    print("Testing is not available in ${rootProject.name}. Skipping...\n")
 }

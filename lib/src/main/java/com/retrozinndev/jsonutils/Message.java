@@ -13,7 +13,7 @@ public abstract class Message {
         if(type.equals(Type.Alert)) {
             System.out.println("JSONutils: Alert: " + message);
         } else if(type.equals(Type.Error)) {
-            System.err.println("JSONutils: Error:" + message);
+            System.err.println("JSONutils: Error: " + message);
         } else if(type.equals(Type.Tip)) {
             System.err.println("JSONutils: Tip: " + message);
         } else {
