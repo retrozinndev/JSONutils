@@ -1,5 +1,7 @@
 # JSONutils
-A simple JSON Library for java, still in development.
+A simple JSON Library for java, focused at being easy-to-use.
+
+> ⚠️ Notice: JSONutils is still under development, currently at the **Beta** stage. Please [help this project](#-Contributing) if you can!
 
 [![](https://jitpack.io/v/retrozinndev/JSONutils.svg)](https://jitpack.io/#retrozinndev/JSONutils)
 ## TODO
@@ -44,3 +46,10 @@ Works the same as when [using a directory](#Using-directory), but using a File c
  /* your code here */
  ...
 ```
+
+## ❤️ Contributing
+### How to Contribute
+You're free to contribute with code, ideas, suggestions, feature requests... and many more! If you just want to suggest a feature, or a change, you can create a [New Issue](repo/issues/new) or a [Start a Discussion](repo/discussions/new) and say what you want to be in the JSONutils Library! Your contribution is always welcome!
+
+## 📜 License
+This library is licensed under the [GNU General Public License v3](https://choosealicense.com/licenses/gpl-3.0/)(and further versions), meaning you can **distribute**, **use the library commercially**, **modify** and **use the library in your personal projects(privately or publicly)**. Feel free to suggest your modified version of the JSONutils Library to the official one! Your contribution is always welcome!
