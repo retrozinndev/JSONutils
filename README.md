@@ -44,12 +44,11 @@ Works the same as when [using a directory](#Using-directory), but using a File c
 ```java
  JSON json = new JSON(new File("fileExample.json")); //Initializes the JSON instance with a File class instance
  /* your code here */
- ...
 ```
 
 ## ❤️ Contributing
 ### How to Contribute
-You're free to contribute with code, ideas, suggestions, feature requests... and many more! If you just want to suggest a feature, or a change, you can create a [New Issue](repo/issues/new) or a [Start a Discussion](repo/discussions/new) and say what you want to be in the JSONutils Library! Your contribution is always welcome!
+You're free to contribute with code, ideas, suggestions, feature requests... and many more! If you just want to suggest a feature, or a change, you can create a [New Issue](https://github.com/retrozinndev/JSONutils/issues/new) and say what you want to be in the JSONutils Library! Your contribution is always welcome!
 
 ## 📜 License
 This library is licensed under the [GNU General Public License v3](https://choosealicense.com/licenses/gpl-3.0/)(and further versions), meaning you can **distribute**, **use the library commercially**, **modify** and **use the library in your personal projects(privately or publicly)**. Feel free to suggest your modified version of the JSONutils Library to the official one! Your contribution is always welcome!
