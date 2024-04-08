@@ -12,8 +12,11 @@ A **simple** and **easy to use** JSON Library for Java.
  - Make a class for formatting single-lined JSON files to multi-line.
 
 ## How it works
-JSONutils Library's focus is the `JSON` class. Make use of the main class for reading and writing JSONs. 
+JSONutils Library's focus is the `JSON` class. Make use of the main class for reading and writing JSONs.
+Refer to the [Wiki(docs)](https://github.com/retrozinndev/JSONutils/wiki) to learn more how JSON utils work.
+
 ### Classes
+
 | Class Name | About the Class |
 | - | - |
 | **JSON** | JSONutils main class. When creating a new JSON class instance, searches for the mentioned file. If the file exists, then the library reads it, adds variables and values contained in it to a HashMap (`jsonMap`). You can get the Map using the `JSON.toMap()` method |
