@@ -21,9 +21,10 @@ public class JSONBuilder {
      * JSONBuilder class constructor, for creating new JSON files with variables and many things.
      * <p>
      * <strong>Recommended:</strong> Use the JSON class getBuilder() method instead.
-     * </p>
-     * @Example
+     * </p><br>
+     * <p>
      * JSON json = new JSON(new File("example.json")).getBuilder().{any function you want to call}();
+     * </p>
      * @param jsonFile
      * The JSON file to be created.
      */
@@ -38,10 +39,11 @@ public class JSONBuilder {
      * JSONBuilder class constructor, for creating new JSON files with variables and many things.
      * <p>
      * <strong>Recommended:</strong> Use the JSON class getBuilder() method instead.
+     * </p><br>
+     * <p>
+     * JSON json = new JSON("some/dir/example.json").getBuilder().anyFunction();
      * </p>
-     * @Example
-     * JSON json = new JSON("some/dir/example.json").getBuilder().{any function you want to call}();
-     * @param jsonFile
+     * @param jsonDir
      * The directory of the JSON file to be created.
      */
     public JSONBuilder(String jsonDir) {
@@ -72,7 +74,7 @@ public class JSONBuilder {
      * Note: This method is used for building new files, not re-building an existing one. For that, use writeJSON() instead.
      * </p>
      * @return
-     * A new JSON instance with the built file.
+     * A new JSON instance of the built file.
      */
     public JSON writeFile() {
         getMap().putAll(getQueuedChanges());
@@ -209,7 +211,7 @@ public class JSONBuilder {
      * Note: when new variables are added, they are queued in this Map until you call makeJSON() on them.
      * </p>
      * @return
-     * Map<String, Object> containing queued changes.
+     * A Map of String and Object containing the queued changes.
      */
     public Map<String, Object> getQueuedChanges() { return queuedJSONChanges; }
 }

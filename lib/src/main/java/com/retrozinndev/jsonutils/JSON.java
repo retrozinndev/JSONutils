@@ -65,7 +65,9 @@ public class JSON {
     }
 
     /**
-     * Checks if json file exists.
+     * Checks if a json file exists.
+     * @param file
+     * The JSON file to check its existence
      * @return
      * Boolean that confirms if json exists.
      */
@@ -121,12 +123,13 @@ public class JSON {
      * OBS: when new variables are added, they are queued in this Map until you build it.
      * </p>
      * @return
-     * Map<String, Object> containing queued changes inside this instance.
+     * Map of String and Object, containing queued changes inside this instance.
      * 
      */
     public Map<String, Object> getQueuedChanges() { return queuedJSONChanges; }
     /**
      * Reads the JSON file. Can be used to prevent problems when trying to get a recently added value to JSON.
+     * @return A JSONReader instance.
      */
     public JSON read() {
         getReader().readMap(this);
@@ -144,9 +147,9 @@ public class JSON {
     }
 
     /**
-     * Gets the JSON objects as a Map<String, Object>
+     * Gets the JSON objects as a Map of String and Object
      * @return
-     * A Map<String, Object> containing the JSON objects.
+     * A Map of String and Object containing the JSON variables.
      */
     public Map<String, Object> toMap() { return jsonMap; }
 
