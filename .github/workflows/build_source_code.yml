@@ -1,4 +1,4 @@
-name: Build source with Gradle
+name: Build and Publish
 
 permissions:
   contents: read
@@ -39,4 +39,4 @@ jobs:
       uses: actions/upload-artifact@v4.2.0
       with:
         name: Build-jar
-        path: build/libs/JSONutils.jar
+        path: lib/build/libs/lib.jar
