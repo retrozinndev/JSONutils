@@ -157,7 +157,7 @@ public class JSONBuilder {
      * @return
      * A JSON representation of the wrote file containing the data.
      */
-    public JSON makeJSON() {
+    public File makeJSON() {
         if(!jsonFile.exists()) { makeEmptyJSON(jsonFile); }
         boolean hasModifications = queuedJSONChanges.size() > 0;
         if(hasModifications) 
@@ -165,7 +165,7 @@ public class JSONBuilder {
         else 
             Message.send(Type.Alert, "No modifications were found for the json object. Skipping write.");
         
-        return null;
+        return jsonFile;
     }
 
     public JSONBuilder newVariable(String keyString, boolean value) {
