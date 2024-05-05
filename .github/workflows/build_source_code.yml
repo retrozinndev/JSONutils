@@ -6,10 +6,10 @@ permissions:
 on:
   push:
     branches: [ "main" ]
-    paths: ["src/"]
+    paths: ["lib/src/"]
   pull_request:
     branches: [ "main" ]
-    paths: ["src/"]
+    paths: ["lib/src/"]
   workflow_dispatch:
   
 jobs:
