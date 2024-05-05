@@ -7,7 +7,6 @@ import java.util.HashMap;
 import com.retrozinndev.jsonutils.Message.Type;
 
 public class JSON {
-    public Map<String, Object> queuedJSONChanges = new HashMap<>();
     protected File jsonFile;
     private JSONReader jReader = null;
     private JSONBuilder jBuilder = null;
@@ -113,7 +112,7 @@ public class JSON {
      * @return This JSON instance.
      */
     public JSON newVariable(String name, Object value) {
-        queuedJSONChanges.put(name, value);
+        getBuilder().queuedJSONChanges.put(name, value);
         return this;
     }
 
@@ -126,13 +125,14 @@ public class JSON {
      * Map of String and Object, containing queued changes inside this instance.
      * 
      */
-    public Map<String, Object> getQueuedChanges() { return queuedJSONChanges; }
+    public Map<String, Object> getQueuedChanges() { return getBuilder().queuedJSONChanges; }
     /**
      * Reads the JSON file. Can be used to prevent problems when trying to get a recently added value to JSON.
      * @return A JSONReader instance.
      */
     public JSON read() {
         getReader().readMap(this);
+        getBuilder().getMap().putAll(this.toMap());
         return this;
     }
 
@@ -141,7 +141,7 @@ public class JSON {
      * @return this JSON instance.
      */
     public JSON write() {
-        getBuilder().writeJSON(this); 
+        getBuilder().writeJSON(toFile());
         read();
         return this;
     }
