@@ -8,11 +8,28 @@
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
+    id 'maven-publish'
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.retrozinndev'
+            artifactId = 'jsonutils'
+            version = "0.2.1-beta"
+            from components.java
+
+            pom {
+                name = 'JSONutils'
+                description = 'A JSON library for Java, focused at being easy to use'
+            }
+        }
+    }
 }
 
 dependencies {
