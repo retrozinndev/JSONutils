@@ -13,7 +13,7 @@ A **simple** and **easy to use** JSON Library for Java.
 
 ## How it works
 JSONutils Library's focus is the `JSON` class. Make use of the main class for reading and writing JSONs.
-Refer to the [Wiki(docs)](https://github.com/retrozinndev/JSONutils/wiki) to learn more how JSON utils work.
+Please refer to the [Wiki](https://github.com/retrozinndev/JSONutils/wiki) to learn more how JSONutils work.
 
 ### Classes
 
@@ -50,4 +50,4 @@ Works the same as when [using a directory](#Directory), but using a File class i
 You're free to contribute with code, ideas, suggestions, feature requests... and many more! If you just want to suggest a feature, or a change, you can create a [New Issue](https://github.com/retrozinndev/JSONutils/issues/new) and say what you want to be in the JSONutils Library! Your contribution is always welcome!
 
 ## 📜 License
-This library is licensed under the [GNU General Public License v3](https://choosealicense.com/licenses/gpl-3.0/)(and further versions), meaning you can **distribute**, **use the library commercially**, **modify** and **use the library in your personal projects(privately or publicly)**. Feel free to suggest your modified version of the JSONutils Library to the official one! Your contribution is always welcome!
+This library is licensed under the [GNU General Public License v3](https://choosealicense.com/licenses/gpl-3.0)(and further versions), meaning you can **distribute**, **use the library commercially**, **modify** and **use the library in your personal projects(privately or publicly)**. Feel free to suggest your modified version of the JSONutils Library to the official one! Your contribution is always welcome!
